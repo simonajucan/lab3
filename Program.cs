@@ -24,6 +24,8 @@ namespace EvidentaStudenti
                 Console.WriteLine("A. Afisare studenti din lista");
                 Console.WriteLine("Z. Afisare studenti fara note din lista");
                 Console.WriteLine("S. Salvare student in lista");
+                Console.WriteLine("F. Cauta student dupa nume si prenume");
+                Console.WriteLine("N. Cauta studenti dupa nume");
                 Console.WriteLine("X. Inchidere program");
 
                 Console.WriteLine("Alegeti o optiune");
@@ -57,6 +59,41 @@ namespace EvidentaStudenti
                             Console.WriteLine("Studentul nu a fost initializat");
                         }
                         break;
+                    case "F":
+                        {
+                            Console.WriteLine("Introduceti numele pentru cautare: ");
+                            string numeCautat = Console.ReadLine();
+                            Console.WriteLine("Introduceti prenumele pentru cautare: ");
+                            string prenumeCautat = Console.ReadLine();
+
+                            Student studentGasit = GetStudent(studenti, numeCautat, prenumeCautat);
+                            if (studentGasit != null
+                                {
+                                    Console.WriteLine("Studentul a fost gasit: ");
+                                    AfisareStudent(studentGasit);
+                                } else 
+                                {
+                                    Console.WriteLine("Studentul nu a fost gasit.");
+                                }
+                            break;
+                        }
+                                
+                    case "N":
+                        {
+                            Console.WriteLine("Introduceti numele pentru cautare: ");
+                            string numeDeCautat = Console.ReadLine() ?? string.Empty;
+
+                            List<Student> rezultate = GetStudenti(studenti , numeDeCautat);
+                            if (rezultate.Count > 0)
+                            {
+                                Console.WriteLine($"Au fost gasiti {rezultate.Count} studenti cu numele {numeDeCautat}: ");
+                                AfisareStudenti(rezultate);
+                            } else {
+                                Console.WriteLine($"Nu s-a gasit niciun student cu numele {numeDeCautat}");
+                            }
+                            break;
+                        }
+                                
 
                     case "X":
                         Console.WriteLine("Aplicatia va fi inchisa");
